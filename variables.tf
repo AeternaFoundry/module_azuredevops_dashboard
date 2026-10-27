@@ -55,10 +55,10 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.dashboards : (
-        v.description == null || (length(v.description) >= 0 && length(v.description) <= 128)
+        v.description == null || (length(v.description) <= 128)
       )
     ])
-    error_message = "must be between 0 and 128 characters"
+    error_message = "must be at most 128 characters"
   }
   validation {
     condition = alltrue([
